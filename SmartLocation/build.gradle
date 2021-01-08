@@ -1,6 +1,7 @@
-plugins {
-    id 'com.android.library'
-}
+//plugins {
+//    id 'com.android.library'
+//}
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 29
@@ -29,10 +30,42 @@ android {
 }
 
 dependencies {
-
+    implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+
+apply plugin: 'com.github.panpf.bintray-publish'
+
+allprojects {
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+    }
+}
+allprojects {
+    tasks.withType(Javadoc) {
+        options{
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/8/docs/api"
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.panpf.bintray-publish:bintray-publish:1.0.0'
+    }
+}
+
+publish {
+    userOrg = 'sweetying520'
+    groupId = 'com.location.sweetying520'
+    artifactId = 'smartlocation'
+    publishVersion = '1.0.0-snapshot'
+    desc = 'get a location'
+    website = 'https://github.com/sweetying520/MyJcenterProject'
 }
