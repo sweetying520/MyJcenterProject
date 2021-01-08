@@ -1,0 +1,3 @@
+include ':SmartLocation'
+include ':app'
+rootProject.name = "MyJcenterProject"
