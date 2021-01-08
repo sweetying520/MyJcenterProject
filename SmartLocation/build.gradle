@@ -65,7 +65,7 @@ publish {
     userOrg = 'sweetying520'
     groupId = 'com.location.sweetying520'
     artifactId = 'smartlocation'
-    publishVersion = '1.0.0-snapshot'
+    publishVersion = '1.0.1-snapshot'
     desc = 'get a location'
     website = 'https://github.com/sweetying520/MyJcenterProject'
 }
